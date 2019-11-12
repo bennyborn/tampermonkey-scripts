@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Golem Abo-Blocker
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/bennyborn
 // @version      0.1
 // @description  Blocks Golems new Ad-Block-Blocker
 // @author       @bennyborn
