@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         Golem Abo-Blocker
-// @namespace    https://github.com/bennyborn
 // @version      0.1
 // @description  Blocks Golems new Ad-Block-Blocker
 // @author       @bennyborn
+// @namespace    https://github.com/bennyborn
 // @match        https://*.golem.de/*
-// @grant        none
 // @run-at       document-start
+// @grant        none
 // @updateURL    https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/golem-de-adblocker.js
 // @downloadURL  https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/golem-de-adblocker.js
 // ==/UserScript==
