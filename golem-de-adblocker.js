@@ -7,6 +7,8 @@
 // @match        https://*.golem.de/*
 // @grant        none
 // @run-at       document-start
+// @updateURL    https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/golem-de-adblocker.js
+// @downloadURL  https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/golem-de-adblocker.js
 // ==/UserScript==
 
 (function() {
