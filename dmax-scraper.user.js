@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         DMAX Episode Scraper
-// @version      0.2
+// @version      0.3
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://www.dmax.de/programme/*
@@ -20,43 +20,41 @@
 
 	scrapeButton.addEventListener('click', function(e){
 
-        const season = /Staffel ([0-9]+) \|/g.exec(document.querySelector('h2.section-title__title').innerText)[1].padStart(2,'0');
-        const episodes = document.querySelectorAll('li.vertical-list-item');
+		const season = /Staffel ([0-9]+) \|/g.exec(document.querySelector('h2.section-title__title').innerText)[1].padStart(2,'0');
+		const episodes = document.querySelectorAll('li.vertical-list-item');
 
-        const cmds = [];
+		const cmds = [];
 
-        episodes.forEach((episode) => {
+		episodes.forEach((episode) => {
 
-            const link = episode.querySelector('a').href;
-            const headline = /F([0-9]+): (.*?)$/g.exec(episode.querySelector('h3').innerText);
-            const num = headline[1];
-            const name = headline[2];
+		    const link = episode.querySelector('a').href;
+		    const headline = /F([0-9]+): (.*?)$/g.exec(episode.querySelector('h3').innerText);
+		    const num = headline[1];
+		    const name = headline[2];
 
-            let title = `S${season}E${num} - ${name}`;
-            title = title.replace('?','');
-            title = title.replace('!','');
+		    let title = `S${season}E${num} - ${name}`;
+		    title = title.replace('?','');
+		    title = title.replace('!','');
 
-            cmds.push(`youtube-dl --format bestvideo+bestaudio/best --output "${title}.%(ext)s" "${link}"`);
-        });
+		    cmds.push(`youtube-dl --format bestvideo+bestaudio/best --output "${title}.%(ext)s" "${link}"`);
+		});
 
-        copyStringToClipboard( cmds.join("\n") );
-        alert('copied');
+		copyStringToClipboard( cmds.join("\n") );
+		alert('copied');
 	});
-
 
 	document.body.appendChild(scrapeButton);
 
-
 	function copyStringToClipboard(str) {
 
-	   const el = document.createElement('textarea');
-	   el.value = str;
-	   el.setAttribute('readonly', '');
-	   el.style = {position: 'absolute', left: '-9999px'};
-	   document.body.appendChild(el);
-	   el.select();
-	   document.execCommand('copy');
-	   document.body.removeChild(el);
+        const el = document.createElement('textarea');
+        el.value = str;
+        el.setAttribute('readonly', '');
+        el.style = {position: 'absolute', left: '-9999px'};
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
 	}
 
 })();
