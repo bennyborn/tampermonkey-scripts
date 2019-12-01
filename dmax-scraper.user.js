@@ -32,7 +32,9 @@
             const num = headline[1];
             const name = headline[2];
 
-            const title = `S${season}E${num} - ${name}`;
+            let title = `S${season}E${num} - ${name}`;
+            title = title.replace('?','');
+            title = title.replace('!','');
 
             cmds.push(`youtube-dl --format bestvideo+bestaudio/best --output "${title}.%(ext)s" "${link}"`);
         });
