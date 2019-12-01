@@ -4,7 +4,7 @@
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://*.southpark.de/*
-// @run-at       document-start
+// @run-at       document-idle
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/southpark-de-scraper.user.js
 // @downloadURL  https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/southpark-de-scraper.user.js
