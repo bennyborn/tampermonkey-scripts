@@ -18,12 +18,12 @@
 	scrapeButton.innerHTML = 'Copy links';
 	scrapeButton.style = 'display: block;position: fixed;top: 10px;left: 10px;background: #dc5014;color: #fff;padding: 0.5em 2em;z-index: 10000;box-shadow: 0 0 4px rgba(0,0,0,0.5);';
 
-    const cmds = [];
-
 	scrapeButton.addEventListener('click', function(e){
 
         const season = /Staffel ([0-9]+) \|/g.exec(document.querySelector('h2.section-title__title').innerText)[1].padStart(2,'0');
         const episodes = document.querySelectorAll('li.vertical-list-item');
+
+        const cmds = [];
 
         episodes.forEach((episode) => {
 
