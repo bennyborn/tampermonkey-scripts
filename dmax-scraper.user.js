@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         DMAX Episode Scraper
-// @version      0.1
+// @version      0.2
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://www.dmax.de/programme/*
@@ -34,7 +34,7 @@
 
             const title = `S${season}E${num} - ${name}`;
 
-            cmds.push(`youtube-dl --format hls-6545 --output "${title}.%(ext)s" "${link}"`);
+            cmds.push(`youtube-dl --format bestvideo+bestaudio/best --output "${title}.%(ext)s" "${link}"`);
         });
 
         copyStringToClipboard( cmds.join("\n") );
