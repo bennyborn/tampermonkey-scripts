@@ -4,7 +4,7 @@
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://*.southpark.de/*
-// @run-at       document-idle
+// @run-at       document-end
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/southpark-de-scraper.user.js
 // @downloadURL  https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/southpark-de-scraper.user.js
@@ -14,7 +14,7 @@
 
 	var button = document.createElement('BUTTON');
 	button.innerHTML = 'Copy links';
-	button.style = 'display: block; position: fixed; top: 10px; left: 10px;';
+	button.style = 'display: block; position: fixed; top: 10px; left: 10px; z-index: 10000;';
 
 	button.addEventListener('click', function(e){
 
