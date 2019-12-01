@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         Episode Scraper
-// @version      0.1
+// @name         Southpark Episode Scraper
+// @version      0.1.1
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://*.southpark.de/*
