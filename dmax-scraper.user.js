@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         DMAX Episode Scraper
-// @version      0.12
+// @version      0.1
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://www.dmax.de/programme/*
