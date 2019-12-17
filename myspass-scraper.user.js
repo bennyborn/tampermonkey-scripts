@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         MySpass Episode Scraper
-// @version      0.1
+// @version      0.2
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://www.myspass.de/shows/tvshows/*/
@@ -51,7 +51,14 @@
 		episodes.forEach((episode, index) => {
 
             const link = episode.querySelector('td:nth-child(1) a').href;
-            const name = episode.querySelector('td:nth-child(1) a').innerText;
+
+            let name = episode.querySelector('td:nth-child(1) a').innerText;
+            const numLen = /^(.*?) -/g.exec(name)[1].length;
+
+            if( /^(.*?) -/g.exec(name)[1].length == 1 ) {
+                name = '0'+name;
+            }
+
             const season = episode.querySelector('td:nth-child(2)').innerText.padStart(2,'0');
 
 		    let title = `S${season}E${name}`;
@@ -66,30 +73,6 @@
                 alert('copied');
             }
 		});
-
-        /*
-		const season = /Staffel ([0-9]+) \|/g.exec(document.querySelector('h2.section-title__title').innerText)[1].padStart(2,'0');
-		const episodes = document.querySelectorAll('li.vertical-list-item');
-
-		const cmds = [];
-
-		episodes.forEach((episode) => {
-
-		    const link = episode.querySelector('a').href;
-		    const headline = /F([0-9]+): (.*?)$/g.exec(episode.querySelector('h3').innerText);
-		    const num = headline[1];
-		    const name = headline[2];
-
-		    let title = `S${season}E${num} - ${name}`;
-		    title = title.replace('?','');
-		    title = title.replace('!','');
-
-		    cmds.push(`youtube-dl --format bestvideo+bestaudio/best --output "${title}.%(ext)s" "${link}"`);
-		});
-
-		copyStringToClipboard( cmds.join("\n") );
-		alert('copied');
-        */
 	});
 
 	function copyStringToClipboard(str) {
