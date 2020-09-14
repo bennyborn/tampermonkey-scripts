@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Southpark Episode Scraper
-// @version      0.2
+// @version      0.3
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://*.southpark.de/*
@@ -42,7 +42,7 @@
 
 			var cmds = [];
 
-			cmds.push(`youtube-dl --format bestvideo+bestaudio/best --output "tmp/%(autonumber)1d.mkv" "${link}"`);
+			cmds.push(`youtube-dl --no-check-certificate --format bestvideo+bestaudio/best --output "tmp/%(autonumber)1d.mkv" "${link}"`);
 			cmds.push(`find "tmp" -path "*.mkv" | sed 's:\ :\\\ :g'| sed 's/^/file /' > "fl.txt"`);
 			cmds.push(`sleep 3`);
 			cmds.push(`ffmpeg -f concat -i "fl.txt" -c copy "${title}.mkv"`);
