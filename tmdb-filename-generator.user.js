@@ -4,7 +4,8 @@
 // @version      0.1
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
-// @include      /^http?s://www\.themoviedb\.org/(movie|tv)/([0-9]+)-*/
+// @match        https://www.themoviedb.org/movie/*
+// @match        https://www.themoviedb.org/tv/*
 // @run-at       document-end
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/tmdb-filename-generator.user.js
@@ -22,7 +23,7 @@
 	button.addEventListener('click', function(e){
 
 		const title = document.querySelector('div.title h2').innerText;
-		const id = document.location.href.match(/themoviedb\.org\/(movie|tv)\/([0-9]+)-/)[2];
+		const id = document.location.href.match(/themoviedb\.org\/(movie|tv)\/([0-9]+)/)[2];
 
 		copyStringToClipboard(`${title} [tmdbid=${id}]`);
 		this.innerText = 'copied!';
