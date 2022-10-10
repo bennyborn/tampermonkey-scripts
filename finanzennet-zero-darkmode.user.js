@@ -12,7 +12,7 @@
 // ==/UserScript==
 
 (function() {
-    
+
     'use strict';
 
     GM_addStyle(`
@@ -51,7 +51,7 @@
             mix-blend-mode: exclusion;
         }
 
-        svg {
+        ng-component svg {
             filter: brightness(0) invert(1);
         }
 
@@ -81,6 +81,15 @@
         .dropdown-item .input-group-material-liste-headline {
             background: #121212;
             color: inherit;
+        }
+
+        .note {
+            color: #121212;
+        }
+        
+        .nav-tabs a.nav-link,
+        .table-post td {
+            color: #818181;
         }
     `);
 })();
