@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IMDB Filename Generator
 // @description  Generate a filename of the shown movie for use in Emby or Jellyfin
-// @version      0.1
+// @version      0.1.1
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://www.imdb.com/title/tt*/
@@ -58,7 +58,7 @@
         const title = document.querySelector('h1[data-testid="hero-title-block__title"]').innerText;
         const id = document.location.href.match(/imdb\.com\/title\/([t0-9]+)/)[1];
 
-        copyStringToClipboard(`${title} [tmdbid=${id}]`);
+        copyStringToClipboard(`${title} [imdbid=${id}]`);
         this.innerText = button.dataset.textCopied;
 
         setTimeout(function(){
