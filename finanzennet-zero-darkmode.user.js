@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         finanzen.net zero Dark Mode
 // @description  Dark Mode for the Desktop version
-// @version      0.1.1
+// @version      0.1.2
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://mein.finanzen-zero.net/*
@@ -77,6 +77,11 @@
             background-color: #1e1e1e;
         }
 
+        .d-flex > div.info-item,
+        .leverage-products .leverage{
+            background: rgb(0 0 0 / 15%);
+        }
+
         .input-group-material-liste-headline,
         .dropdown-item .input-group-material-liste-headline {
             background: #121212;
@@ -88,8 +93,13 @@
         }
         
         .nav-tabs a.nav-link,
-        .table-post td {
+        .table-post td,
+        .watchlist .input-group-material input::placeholder {
             color: #818181;
+        }
+
+        .watchlist .input-group-material input {
+            color: #fff;
         }
     `);
 })();
