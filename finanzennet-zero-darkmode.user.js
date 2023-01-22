@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         finanzen.net zero Dark Mode
 // @description  Dark Mode for the Desktop version
-// @version      0.1.3
+// @version      0.1.4
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://mein.finanzen-zero.net/*
@@ -9,6 +9,7 @@
 // @grant        GM_addStyle
 // @updateURL    https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/finanzennet-zero-darkmode.user.js
 // @downloadURL  https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/finanzennet-zero-darkmode.user.js
+// @icon         https://www.google.com/s2/favicons?domain=mein.finanzen-zero.net
 // ==/UserScript==
 
 (function() {
