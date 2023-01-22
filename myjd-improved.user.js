@@ -9,6 +9,7 @@
 // @grant        GM_addStyle
 // @updateURL    https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/myjd-improved.user.js
 // @downloadURL  https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/myjd-improved.user.js
+// @icon         https://www.google.com/s2/favicons?domain=jdownloader.org
 // ==/UserScript==
 
 (function() {
