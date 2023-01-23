@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MyJdownloader improved
 // @description  Making MyJD more responsive and dark
-// @version      0.1.1
+// @version      0.1.2
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://my.jdownloader.org/*
