@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Episode Name Grabber
 // @description  Copies the german episode names into you clipboard for renaming your local files
-// @version      0.0.1
+// @version      0.0.2
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://www.fernsehserien.de/*/episodenguide
