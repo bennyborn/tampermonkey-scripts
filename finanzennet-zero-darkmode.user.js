@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         finanzen.net zero Dark Mode
 // @description  Dark Mode for the Desktop version
-// @version      0.1.4
+// @version      0.1.5
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://mein.finanzen-zero.net/*
@@ -99,9 +99,10 @@
             color: #818181;
         }
 
+        .input-group-material label,
         .alert-danger,
         .watchlist .input-group-material input {
-            color: #fff;
+            color: #fff !important;
         }
     `);
 })();
