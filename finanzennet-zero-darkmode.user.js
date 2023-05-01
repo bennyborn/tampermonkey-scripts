@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         finanzen.net zero Dark Mode
 // @description  Dark Mode for the Desktop version
-// @version      0.1.5
+// @version      0.1.6
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://mein.finanzen-zero.net/*
@@ -18,19 +18,43 @@
 
     GM_addStyle(`
 
-        body {
-            background: #121212;
-            color: #e5e5e5;
+        :root {
+          --fzdm-gray: #121212;
+          --fzdm-light-gray: #e5e5e5;
+          --fzdm-blue: #c1e0ff;
+          --fzdm-dark-blue: #1e1e1e;
+          --fzdm-medium-gray: #818181;
+          --fzdm-white: #ffffff;
         }
 
-        .tile {
-            border-color: transparent;
+        body {
+            background: var(--fzdm-gray);
+            color: var(--fzdm-light-gray);
         }
 
         .tile,
         .tile.customer,
-        .snackbar-content{
-            background-color: #1e1e1e;
+        .snackbar-content,
+        .tile-slider,
+        .text-color-primary,
+        a,
+        .link-primary,
+        .text-color-primary-lighter,
+        .table-tickets td,
+        .table-post td,
+        .table,
+        .input-group-material-liste,
+        app-asset-search ngb-typeahead-window.dropdown-menu {
+            color: var(--fzdm-blue);
+        }
+
+        .tile,
+        .tile.customer,
+        .snackbar-content,
+        .tile-slider,
+        .input-group-material-liste,
+        app-asset-search ngb-typeahead-window.dropdown-menu {
+            background-color: var(--fzdm-dark-blue);
         }
 
         .tile,
@@ -38,18 +62,23 @@
             box-shadow: none;
         }
 
-        .text-color-primary {
-            color: #c1e0ff;
+        .tile {
+            border-color: transparent;
         }
 
-        a,
-        .text-color-primary-lighter {
-            color: #c1e0ff73;
-        }
-
-        charts-web-trading-view-chart {
+        ngb-modal-window,
+        .chart-container {
             filter: invert(1) brightness(1.75) hue-rotate(198deg);
             mix-blend-mode: exclusion;
+        }
+
+        ngb-modal-window,
+        ngb-modal-window .chart-container{
+            mix-blend-mode: unset;
+        }
+
+        ngb-modal-window .chart-container {
+           filter: none;
         }
 
         ng-component svg {
@@ -58,14 +87,21 @@
 
         .input-group-material-liste,
         app-asset-search ngb-typeahead-window.dropdown-menu {
-            background: #1212125e;
-            color: #e5e5e5;
+            background: var(--fzdm-transparent-gray);
+            color: var(--fzdm-light-gray);
             backdrop-filter: blur(4px);
             box-shadow: none;
         }
 
-        .dropdown-item {
-            color: inherit;
+        .dropdown-item,
+        .d-flex > div.info-item,
+        .leverage-products .leverage,
+        .input-group-material-liste-headline,
+        .dropdown-item .input-group-material-liste-headline,
+        .note,
+        .nav-tabs a.nav-link,
+        .watchlist .input-group-material input::placeholder {
+            color: var(--fzdm-medium-gray);
         }
 
         .dropdown-item:hover,
@@ -74,35 +110,16 @@
         app-asset-search ngb-typeahead-window.dropdown-menu>.dropdown-item .input-group-material-liste-item:hover,
         app-asset-search ngb-typeahead-window.dropdown-menu>.dropdown-item.active .input-group-material-liste-item,
         .input-group-material-liste>.input-group-material-liste-item:focus,
-        app-asset-search ngb-typeahead-window.dropdown-menu>.dropdown-item .input-group-material-liste-item:focus {
-            background-color: #1e1e1e;
-        }
-
+        app-asset-search ngb-typeahead-window.dropdown-menu>.dropdown-item .input-group-material-liste-item:focus,
         .d-flex > div.info-item,
-        .leverage-products .leverage{
+        .leverage-products .leverage {
             background: rgb(0 0 0 / 15%);
-        }
-
-        .input-group-material-liste-headline,
-        .dropdown-item .input-group-material-liste-headline {
-            background: #121212;
-            color: inherit;
-        }
-
-        .note {
-            color: #121212;
-        }
-        
-        .nav-tabs a.nav-link,
-        .table-post td,
-        .watchlist .input-group-material input::placeholder {
-            color: #818181;
         }
 
         .input-group-material label,
         .alert-danger,
         .watchlist .input-group-material input {
-            color: #fff !important;
+            color: var(--fzdm-white) !important;
         }
     `);
 })();
