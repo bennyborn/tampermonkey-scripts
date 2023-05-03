@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         finanzen.net zero Dark Mode
 // @description  Dark Mode for the Desktop version
-// @version      0.1.6
+// @version      0.1.7
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://mein.finanzen-zero.net/*
@@ -120,6 +120,10 @@
         .alert-danger,
         .watchlist .input-group-material input {
             color: var(--fzdm-white) !important;
+        }
+        
+        .dividend-value-container .instrument-name {
+            background: none !important;
         }
     `);
 })();
