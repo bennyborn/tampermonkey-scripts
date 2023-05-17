@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         mydealz.de Dark Mode
 // @description  Dark Mode for the Desktop version
-// @version      0.0.1
+// @version      0.0.2
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://www.mydealz.de/*
@@ -27,6 +27,10 @@
         #content-list,
         .page-navigation{
             background: #121212;
+        }
+        
+        div[contenteditable="true"] {
+            color: #121212;
         }
 
         .stickyBar-bottom, .stickyBar-top,
