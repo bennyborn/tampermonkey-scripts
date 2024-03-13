@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         finanzen.net zero Dark Mode
 // @description  Dark Mode for the Desktop version
-// @version      0.1.7
+// @version      0.1.8
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://mein.finanzen-zero.net/*
@@ -22,6 +22,7 @@
           --fzdm-gray: #121212;
           --fzdm-light-gray: #e5e5e5;
           --fzdm-blue: #c1e0ff;
+          --fzdm-blue-light: #47a0ff;
           --fzdm-dark-blue: #1e1e1e;
           --fzdm-medium-gray: #818181;
           --fzdm-white: #ffffff;
@@ -81,7 +82,8 @@
            filter: none;
         }
 
-        ng-component svg {
+        ng-component svg,
+        .cursor-pointer > svg.icon {
             filter: brightness(0) invert(1);
         }
 
@@ -121,9 +123,31 @@
         .watchlist .input-group-material input {
             color: var(--fzdm-white) !important;
         }
-        
+
         .dividend-value-container .instrument-name {
             background: none !important;
         }
+
+        .link-black {
+            color: var(--fzdm-blue);
+        }
+
+        a:hover,
+        .col .tile .headline {
+            color: var(--fzdm-blue-light) !important;
+        }
+
+        .card, .circle {
+            background: var(--fzdm-gray);
+        }
+
+        .btn.btn-toggle {
+            color: #fff;
+        }
+
+        .options > div {
+            background: transparent !important;
+        }
+
     `);
 })();
