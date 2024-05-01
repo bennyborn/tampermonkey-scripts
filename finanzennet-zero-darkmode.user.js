@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         finanzen.net zero Dark Mode
 // @description  Dark Mode for the Desktop version
-// @version      0.1.8
+// @version      0.1.9
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://mein.finanzen-zero.net/*
@@ -28,6 +28,7 @@
           --fzdm-white: #ffffff;
         }
 
+        .zero-backdrop.main-backdrop, .main-backdrop.tile, .main-backdrop.alert,
         body {
             background: var(--fzdm-gray);
             color: var(--fzdm-light-gray);
@@ -141,8 +142,11 @@
             background: var(--fzdm-gray);
         }
 
+        .buying-power,
+        .tile .text,
+        .customer-header,
         .btn.btn-toggle {
-            color: #fff;
+            color: #fff !important;
         }
 
         .options > div {
