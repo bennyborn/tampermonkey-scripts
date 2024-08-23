@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MyJdownloader improved
 // @description  Making MyJD more responsive and dark
-// @version      0.1.3
+// @version      0.1.4
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://my.jdownloader.org/*
@@ -228,6 +228,10 @@
         .selectionHeader img {
             -webkit-filter: none;
             filter: grayscale(1) contrast(55);
+        }
+
+        .gwt-PopupPanel {
+            position: fixed !important;
         }
 
         .gwt-PopupPanel * {
