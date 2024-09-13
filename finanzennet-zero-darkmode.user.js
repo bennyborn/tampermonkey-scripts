@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         finanzen.net zero Dark Mode
 // @description  Dark Mode for the Desktop version
-// @version      0.1.10
+// @version      0.1.11
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://mein.finanzen-zero.net/*
@@ -153,6 +153,10 @@
         a.zero-text.default,
         .app-icon.zero-text.default {
             color: var(--fzdm-white);
+        }
+
+        .text-color-grey {
+            color: var(--fzdm-light-gray);
         }
 
         .options > div {
