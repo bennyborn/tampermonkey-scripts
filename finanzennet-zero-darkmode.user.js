@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         finanzen.net zero Dark Mode
-// @description  Dark Mode for the Desktop version
-// @version      0.1.11
+// @description  Dark Mode for the Desktop version (relaunch 2026)
+// @version      0.2.0
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://mein.finanzen-zero.net/*
-// @run-at       document-end
+// @run-at       document-start
 // @grant        GM_addStyle
 // @updateURL    https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/finanzennet-zero-darkmode.user.js
 // @downloadURL  https://raw.githubusercontent.com/bennyborn/tampermonkey-scripts/master/finanzennet-zero-darkmode.user.js
@@ -16,151 +16,121 @@
 
     'use strict';
 
+    const enableTheme = () => {
+
+        const root = document.documentElement;
+
+        if (!root) {
+            return false;
+        }
+
+        const apply = () => {
+            if (root.dataset.theme !== 'dark') {
+                root.dataset.theme = 'dark';
+            }
+        };
+
+        apply();
+
+        new MutationObserver(apply).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+
+        return true;
+    };
+
+    if (!enableTheme()) {
+
+        const observer = new MutationObserver(() => {
+            if (enableTheme()) {
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document, { childList: true });
+    }
+
     GM_addStyle(`
 
-        :root {
-          --fzdm-gray: #121212;
-          --fzdm-light-gray: #e5e5e5;
-          --fzdm-blue: #c1e0ff;
-          --fzdm-blue-light: #47a0ff;
-          --fzdm-dark-blue: #1e1e1e;
-          --fzdm-medium-gray: #818181;
-          --fzdm-white: #ffffff;
+        html:root.zero-rebrush-2026[data-theme="dark"] {
+          color-scheme: dark;
+        
+          --surface-page: #0a0c0f;
+          --surface-base: #0f1215;
+          --surface-basetint: #11161c;
+          --surface-raised: #161a1f;
+          --surface-subtle: #1b2026;
+          --surface-floating: #222831;
+          --surface-input-field: #0f1215;
+          --surface-input-field-input-field: #0f1215;
+          --surface-overlay: rgba(0, 0, 0, .65);
+          --surface-semi-transparent: rgba(22, 26, 31, .65);
+          --surface-semi-transparent-blur: rgba(22, 26, 31, .88);
+        
+          --content-default: #e8ebee;
+          --content-muted: #aab3bd;
+          --content-subtle: #7f8a96;
+        
+          --color-partnership: #2a1d44;
+        
+          --border-default: #2a3038;
+          --border-muted: #3a424c;
+        
+          --color-grey-50: #f2f4f6;
+          --color-grey-100: #e8ebee;
+          --color-grey-200: #d3d8de;
+          --color-grey-300: #aab3bd;
+          --color-grey-400: #8c96a2;
+          --color-grey-500: #6a7480;
+          --color-grey-600: #3a424c;
+          --color-grey-700: #2a3038;
+          --color-grey-800: #1b2026;
+          --color-grey-900: #12161a;
+        
+          --shadow-card-shadow-1: rgba(0, 0, 0, .5);
+          --shadow-modal-shadow: rgba(0, 0, 0, .7);
+          --shadow-popover-shadow: rgba(0, 0, 0, .7);
+        }
+        
+        html[data-theme="dark"] body,
+        html[data-theme="dark"] body.zero-backdrop,
+        html[data-theme="dark"] body.main-backdrop {
+          background: var(--surface-page) !important;
+          color: var(--content-default);
+        }
+        
+        html[data-theme="dark"] .bg-white,
+        html[data-theme="dark"] .zero-card.bg-white,
+        html[data-theme="dark"] .tile,
+        html[data-theme="dark"] .zero-backdrop.box-white,
+        html[data-theme="dark"] .box-white.alert {
+          background-color: var(--surface-raised) !important;
+        }
+        
+        html[data-theme="dark"] img[src*="logo-invest-color"] {
+          filter: invert(1) hue-rotate(180deg);
+        }
+        
+        html[data-theme="dark"] .tv-lightweight-charts {
+          filter: invert(.91) hue-rotate(180deg);
+        }
+        
+        html[data-theme="dark"] a.link-primary,
+        html[data-theme="dark"] a.link.link-primary {
+          color: var(--content-info);
+        }
+        html[data-theme="dark"] .new-venue-hint {
+          color: #0a0c0f;
+        }
+        html[data-theme="dark"] ::placeholder {
+          color: var(--content-subtle);
+          opacity: 1;
         }
 
-        .zero-backdrop.main-backdrop, .main-backdrop.tile, .main-backdrop.alert,
-        body {
-            background: var(--fzdm-gray);
-            color: var(--fzdm-light-gray);
+        html[data-theme="dark"] .chart-container:not(:has(.tv-lightweight-charts)) canvas,
+        html[data-theme="dark"] .suggestion-dot {
+          filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f' color-interpolation-filters='sRGB'%3E%3CfeComponentTransfer%3E%3CfeFuncR type='gamma' exponent='.5'/%3E%3CfeFuncG type='gamma' exponent='.5'/%3E%3CfeFuncB type='gamma' exponent='.5'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3C/svg%3E#f");
         }
-
-        .tile,
-        .tile.customer,
-        .snackbar-content,
-        .tile-slider,
-        .text-color-primary,
-        a,
-        .link-primary,
-        .text-color-primary-lighter,
-        .table-tickets td,
-        .table-post td,
-        .table,
-        .input-group-material-liste,
-        app-asset-search ngb-typeahead-window.dropdown-menu {
-            color: var(--fzdm-blue);
-        }
-
-        .tile,
-        .tile.customer,
-        .snackbar-content,
-        .tile-slider,
-        .input-group-material-liste,
-        app-asset-search ngb-typeahead-window.dropdown-menu {
-            background-color: var(--fzdm-dark-blue);
-        }
-
-        .tile,
-        .tile-slider {
-            box-shadow: none;
-        }
-
-        .tile {
-            border-color: transparent;
-        }
-
-        ngb-modal-window,
-        .chart-container {
-            filter: invert(1) brightness(1.75) hue-rotate(198deg);
-            mix-blend-mode: exclusion;
-        }
-
-        ngb-modal-window,
-        ngb-modal-window .chart-container{
-            mix-blend-mode: unset;
-        }
-
-        ngb-modal-window .chart-container {
-           filter: none;
-        }
-
-        ng-component svg,
-        .cursor-pointer > svg.icon {
-            filter: brightness(0) invert(1);
-        }
-
-        .input-group-material-liste,
-        app-asset-search ngb-typeahead-window.dropdown-menu {
-            background: var(--fzdm-transparent-gray);
-            color: var(--fzdm-light-gray);
-            backdrop-filter: blur(4px);
-            box-shadow: none;
-        }
-
-        .dropdown-item,
-        .d-flex > div.info-item,
-        .leverage-products .leverage,
-        .input-group-material-liste-headline,
-        .dropdown-item .input-group-material-liste-headline,
-        .note,
-        .nav-tabs a.nav-link,
-        .watchlist .input-group-material input::placeholder {
-            color: var(--fzdm-medium-gray);
-        }
-
-        .dropdown-item:hover,
-        .dropdown-item:focus,
-        .input-group-material-liste>.input-group-material-liste-item:hover,
-        app-asset-search ngb-typeahead-window.dropdown-menu>.dropdown-item .input-group-material-liste-item:hover,
-        app-asset-search ngb-typeahead-window.dropdown-menu>.dropdown-item.active .input-group-material-liste-item,
-        .input-group-material-liste>.input-group-material-liste-item:focus,
-        app-asset-search ngb-typeahead-window.dropdown-menu>.dropdown-item .input-group-material-liste-item:focus,
-        .d-flex > div.info-item,
-        .leverage-products .leverage {
-            background: rgb(0 0 0 / 15%);
-        }
-
-        .input-group-material label,
-        .alert-danger,
-        .watchlist .input-group-material input {
-            color: var(--fzdm-white) !important;
-        }
-
-        .dividend-value-container .instrument-name {
-            background: none !important;
-        }
-
-        .link-black {
-            color: var(--fzdm-blue);
-        }
-
-        a:hover,
-        .col .tile .headline {
-            color: var(--fzdm-blue-light) !important;
-        }
-
-        .card, .circle,
-        .btn-icon {
-            background: var(--fzdm-gray);
-        }
-
-        .buying-power,
-        .tile .text,
-        .customer-header,
-        .btn.btn-toggle {
-            color: var(--fzdm-white) !important;
-        }
-
-        a.zero-text.default,
-        .app-icon.zero-text.default {
-            color: var(--fzdm-white);
-        }
-
-        .text-color-grey {
-            color: var(--fzdm-light-gray);
-        }
-
-        .options > div {
-            background: transparent !important;
+        html[data-theme="dark"] img[src*="extraetf-logo"] {
+          filter: invert(1) hue-rotate(180deg);
         }
 
     `);
