@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         finanzen.net zero Dark Mode
 // @description  Dark Mode for the Desktop version (relaunch 2026)
-// @version      0.2.0
+// @version      0.2.1
 // @author       @bennyborn
 // @namespace    https://github.com/bennyborn
 // @match        https://mein.finanzen-zero.net/*
@@ -101,6 +101,7 @@
         html[data-theme="dark"] .zero-card.bg-white,
         html[data-theme="dark"] .tile,
         html[data-theme="dark"] .zero-backdrop.box-white,
+        html[data-theme="dark"] .post-box-page__card,
         html[data-theme="dark"] .box-white.alert {
           background-color: var(--surface-raised) !important;
         }
